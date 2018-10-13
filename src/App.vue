@@ -1,23 +1,20 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png" class="responsive">
     <TodoList/>
   </div>
 </template>
 
 <script>
-import TodoList from './components/TodoList.vue'
+import TodoList from "./components/TodoList.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     TodoList
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-}
+@import url("https://fonts.googleapis.com/css?family=Pacifico");
 </style>
