@@ -19,3 +19,5 @@ npm run build
 ```
 npm run lint
 ```
+
+### Don't forget to add your firebase authentification!
