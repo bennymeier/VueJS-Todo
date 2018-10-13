@@ -1,12 +1,12 @@
 <template>
   <div class="container">
-    <h1>Todos</h1>
+    <h1>Todos 👇🏻</h1>
     <form @submit.prevent="addTodo">
-      <input type="text" placeholder="Add a todo!" v-model="todo.name">
+      <input type="text" placeholder="Add a todo! ⚡️" v-model="todo.name">
     </form>
     <ul>
       <li v-for="(todo, index) in todos" :key="index">
-        {{ todo.data.name }}
+        <p class="formatText">{{ todo.data.name }}</p> <span class="date">{{ todo.data.date }}</span>
         <button @click="deleteTodo(todo.key)" class="rm">Remove</button>
       </li>
     </ul>
@@ -26,22 +26,23 @@ export default {
       removed: false,
       todos: [],
       todo: {
-        name: "",
-        date: this.getShortDate()
+        name: ""
       }
     };
   },
   methods: {
     addTodo() {
-      firebase
-        .database()
-        .ref("todos")
-        .push({
-          name: this.todo.name,
-          date: this.todo.date
-        });
-      this.todo.name = "";
-      this.todo.date = "";
+      if (this.todo.name.length > 0) {
+        firebase
+          .database()
+          .ref("todos")
+          .push({
+            name: this.todo.name,
+            date: this.getShortDate()
+          });
+        this.todo.name = "";
+        this.todo.date = "";
+      }
     },
     deleteTodo(index) {
       firebase
@@ -55,7 +56,7 @@ export default {
           }, 2000);
         })
         .catch(error => {
-          console.warn(error);
+          throw new Error(error);
         });
     },
     getShortDate() {
@@ -81,13 +82,29 @@ export default {
 body {
   background-color: #f4f4f4;
   text-align: center;
+  font-family: 'Pacifico';
+}
+.formatText {
+  word-break: break-all;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.date {
+  position: absolute;
+  left: 40px;
+  padding-right: 10px;
+  font-size: 0.8rem;
 }
 ul {
   list-style-type: none;
-  padding: 0;
+  padding: 0 20px 0 20px;
+  margin-bottom: 1rem;
 }
 li {
   list-style-type: none;
+  border-radius: 6px;
 }
 ul li {
   padding: 20px;
@@ -97,7 +114,8 @@ ul li {
 input {
   border: none;
   padding: 20px;
-  width: calc(50% - 40px);
+  /* width: calc(50% - 250px); */
+  width: 60vw;
   box-shadow: 0 5px 5px lightgrey;
   margin-bottom: 50px;
   outline: none;
@@ -116,14 +134,21 @@ button {
   cursor: pointer;
 }
 .rm {
+  position: absolute;
+  right: 40px;
+  padding-bottom: 50px;
   float: right;
   text-transform: uppercase;
   font-size: 0.8em;
-  background: #f9d0e3;
+  background: #1abc9c;
   border: none;
   padding: 5px;
-  color: #ff0076;
+  color: white;;
   cursor: pointer;
+  margin-top: -11px;
+}
+.rm:hover {
+  background: #1abc9ce8;
 }
 .snackbar {
   min-width: 250px;
