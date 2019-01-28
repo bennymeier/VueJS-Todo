@@ -1,4 +1,4 @@
-# Simple todolist made with vueJS and Firebase.
+# Simple todolist made with VueJS and Firebase.
 
 ![Todolist](https://raw.githubusercontent.com/bennymeier/VueJS-Todo/master/todo.PNG)
 
