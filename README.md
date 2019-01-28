@@ -1,4 +1,5 @@
-# todolist-firebase
+# Simple todolist made with vueJS and Firebase.
+
 
 ## Project setup
 ```
