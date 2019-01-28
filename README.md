@@ -1,5 +1,6 @@
 # Simple todolist made with vueJS and Firebase.
 
+![Todolist](https://raw.githubusercontent.com/bennymeier/VueJS-Todo/master/todo.PNG)
 
 ## Project setup
 ```
